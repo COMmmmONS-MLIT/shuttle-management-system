@@ -1,0 +1,15 @@
+ja:
+  activemodel:
+    attributes:
+      staff_registration_form/staff:
+        id: ID
+        cd: 職員番号
+        name: 職員名
+        name_kana: 職員名（カナ）
+        category: 職種カテゴリ
+        can_driver: 運転可能
+        can_helper: 添乗可能
+        driver_type: 運転手区分
+        mail: メールアドレス
+        tel: 電話番号
+        can_driving_cars: 運転可能車両

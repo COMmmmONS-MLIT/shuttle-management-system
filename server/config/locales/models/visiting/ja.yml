@@ -1,0 +1,6 @@
+ja:
+  activerecord:
+    models:
+      visiting: 来館
+    attributes:
+      visiting:

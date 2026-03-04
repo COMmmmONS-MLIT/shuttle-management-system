@@ -1,0 +1,16 @@
+ja:
+  activerecord:
+    models:
+      car_pattern: 車両パターン
+    attributes:
+      car_pattern:
+        id: ID
+        name: パターン名
+        car_type: 車両タイプ
+  enums:
+    car_pattern:
+      car_type:
+        micro_van: マイクロバス
+        normal: 普通車
+        minivan: ミニバン
+        small_car: 軽

@@ -1,0 +1,35 @@
+create_table :visitings_customers, id: { type: :integer, collation: "utf8mb4_0900_ai_ci" }, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", comment: '来館予定' do |t|
+  t.integer :office_id, null: false, comment: '事業所ID (FK)'
+  t.integer :soge_type, comment: '送迎種別 1:迎え 2:送り'
+  t.date :date, comment: '日付'
+  t.integer :visiting_id, comment: '送迎ID (FK)'
+  t.integer :customer_id, null: false, comment: '利用者ID (FK)'
+  t.integer :order, comment: '順番'
+  t.time :schedule_time, comment: '予定時間'
+  t.time :actual_time, comment: '実迎時間'
+  t.time :start_time, comment: '開始時間'
+  t.integer :point_id, comment: '迎え場所ID (FK)'
+  t.boolean :is_self, comment: '自来自退'
+  t.boolean :request, comment: '送迎リクエスト'
+  t.boolean :is_absent, default: false, comment: 'お休み'
+  t.text :absence_reason, comment: 'お休み理由'
+  t.text :note, comment: '備考'
+  t.integer :passenger_count, default: 1, comment: '乗車人数'
+  t.integer :base_point_id, comment: '迎え場所基点ID'
+  t.boolean :is_requested, default: false, comment: 'リクエストされた送迎'
+  t.boolean :is_requesting, default: false, comment: 'リクエストした送迎'
+  t.time :arrival_time, comment: '到着時間'
+
+  t.timestamps
+
+end
+
+add_foreign_key :visitings_customers, :offices, column: :office_id
+add_foreign_key :visitings_customers, :visitings, column: :visiting_id
+add_foreign_key :visitings_customers, :customers, column: :customer_id
+add_foreign_key :visitings_customers, :bookmark, column: :base_point_id, primary_key: :bid
+
+add_index :visitings_customers, :office_id
+add_index :visitings_customers, :visiting_id
+add_index :visitings_customers, :customer_id
+add_index :visitings_customers, :base_point_id

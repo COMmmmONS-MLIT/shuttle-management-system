@@ -1,0 +1,12 @@
+create_table :notifications, id: { type: :integer, collation: "utf8mb4_0900_ai_ci" }, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", comment: '通知' do |t|
+  t.integer :office_id, null: false, comment: '事業所ID (FK)'
+  t.string :message, null: false, comment: 'メッセージ'
+  t.integer :category, comment: 'カテゴリ (enum)'
+  t.datetime :read_at, comment: '確認した時間'
+  t.json :metadata, comment: '関連データ'
+  t.timestamps
+end
+
+add_foreign_key :notifications, :offices, column: :office_id
+
+add_index :notifications, :office_id

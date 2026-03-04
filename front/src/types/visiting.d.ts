@@ -1,0 +1,53 @@
+import { BasePoint } from "./basePoint";
+import { RoutePoint } from "./soge";
+
+export type Visiting = {
+  id: number;
+  date: string;
+  car_id: number;
+  car_name?: string;
+  bin_order: number;
+  driver_id: number;
+  tenjo_id: number;
+  departure_time: string;
+  arrival_time: string;
+  total_customers: number;
+  total_wheelchair: number;
+  total_cargo_volume: number;
+  use_passenger_seat: boolean;
+  customers_count?: number;
+  max_seat?: number;
+  max_wc_seat?: number;
+  customers: VisitingsCustomer[];
+  route_points: RoutePoint[];
+  base_points: BasePoint[];
+  departure_point_id?: number;
+  arrival_point_id?: number;
+  is_optimized_route?: boolean;
+};
+
+export type TourismVisiting = {
+  id: number;
+  date: string;
+  car_id: number;
+  car_name?: string;
+  bin_order: number;
+  driver_id: number;
+  tenjo_id: number;
+  departure_time: string;
+  arrival_time: string;
+  total_customers: number;
+  total_wheelchair: number;
+  total_cargo_volume: number;
+  use_passenger_seat: boolean;
+  customers_count?: number;
+  max_seat?: number;
+  max_wc_seat?: number;
+  customers: VisitingsCustomer[];
+  route_points: TourismRoutePoint[];
+  base_points: BasePoint[];
+  departure_point_id?: number;
+  arrival_point_id?: number;
+  is_requested?: boolean;
+  is_optimized_route?: boolean;
+};

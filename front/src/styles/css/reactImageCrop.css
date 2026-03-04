@@ -1,0 +1,5 @@
+@import "react-image-crop/dist/ReactCrop.css";
+
+.ReactCrop__child-wrapper>img, .ReactCrop__child-wrapper>video {
+  max-width: unset;
+}

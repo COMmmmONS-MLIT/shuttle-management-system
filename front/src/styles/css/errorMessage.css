@@ -1,0 +1,55 @@
+select.error, input.error {
+  border: 1px solid red !important;
+}
+.errorMessage {
+  display: block;
+  color: red;
+  width: 100%;
+  font-size: 85%;
+}
+.errorMessage.hidden {
+  display: none;
+}
+.errorMessage.inputField.long {
+  max-width: 300px;
+}
+.errorMessage.inputField.middle {
+  max-width: 170px;
+}
+.errorMessage.inputField.short {
+  max-width: 85px;
+}
+.errorMessage.selectField {
+  max-width: 95.78px;
+}
+.errorMessage.radioField {
+  padding-left: 4px;
+}
+.errorMessage.checkBoxGroupVertical {
+  padding-left: 4px;
+  margin-top: 8px;
+}
+.errorMessage.wc-numbers {
+  padding-left: 8px;
+  margin-top: -15px;
+  margin-bottom: 15px;
+}
+.w-100 {
+  display: block;
+  width: 100%;
+}
+.w-100.errorMessage {
+  padding-left: 4px;
+}
+.inputbox label.select.w-error {
+  align-items: flex-start !important;
+}
+.inputbox label.select.w-error::before {
+  top: 0;
+}
+.inputbox label.select.w-error::after {
+  top: 1.4em;
+}
+.m-0 {
+  margin: 0 !important;
+}

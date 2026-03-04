@@ -1,0 +1,15 @@
+create_table "NowPos", primary_key: "id", id: false, charset: "utf8", force: :cascade do |t|
+  t.integer "id", limit: 6, null: false
+  t.date "日付"
+  t.time "時間"
+  t.string "運転手", limit: 30
+  t.decimal "Posx", precision: 9, scale: 6
+  t.decimal "Posy", precision: 9, scale: 6
+  t.string "rest", limit: 1, comment: "休憩中かどうか"
+  t.integer "battery", limit: 3, comment: "端末のバッテリー残量"
+  t.time "出発時間", null: false
+  t.string "事業所cd", limit: 10
+  t.string "status", limit: 20
+  t.index ["事業所cd"], name: "index_office"
+  t.index ["日付"], name: "index_date" 
+end

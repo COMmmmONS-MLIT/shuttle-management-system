@@ -1,0 +1,12 @@
+create_table :office_request_relationships, id: { type: :integer, collation: "utf8mb4_0900_ai_ci" }, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", comment: '事業所リクエスト関係' do |t|
+  t.integer :request_office_id, null: false, comment: '依頼元事業所ID'
+  t.integer :accept_office_id, null: false, comment: '依頼先事業所ID'  
+
+  t.timestamps
+end
+
+add_foreign_key :office_request_relationships, :offices, column: :request_office_id
+add_foreign_key :office_request_relationships, :offices, column: :accept_office_id
+
+add_index :office_request_relationships, :request_office_id
+add_index :office_request_relationships, :accept_office_id

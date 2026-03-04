@@ -1,0 +1,149 @@
+execute("DROP VIEW IF EXISTS visiting_max_passengers")
+
+execute("CREATE VIEW visiting_max_passengers AS
+  WITH events AS (
+    -- 送りの乗車イベント（base_point_idが事業所の場合はorder=0、それ以外はVPのorder）
+    SELECT 
+      vc.visiting_id,
+      CASE 
+        WHEN vc.base_point_id = v.departure_point_id THEN 0
+        ELSE COALESCE((
+          SELECT MIN(vp.order)
+          FROM visitings_points vp
+          WHERE vp.visiting_id = vc.visiting_id 
+            AND vp.point_id = vc.base_point_id
+            AND vp.arrival = false
+        ), vc.order)
+      END as event_order,
+      vc.passenger_count as delta,
+      CASE WHEN c.wc = 1 THEN vc.passenger_count ELSE 0 END as wc_delta,
+      CASE WHEN c.wc = 0 THEN vc.passenger_count ELSE 0 END as normal_delta
+    FROM visitings_customers vc
+    JOIN visitings v ON v.id = vc.visiting_id
+    JOIN customers c ON c.id = vc.customer_id
+    WHERE vc.soge_type = 2  -- drop_off
+    
+    UNION ALL
+    
+    -- 送りの降車イベント（VCのorder）
+    SELECT 
+      vc.visiting_id,
+      vc.order as event_order,
+      -vc.passenger_count as delta,
+      CASE WHEN c.wc = 1 THEN -vc.passenger_count ELSE 0 END as wc_delta,
+      CASE WHEN c.wc = 0 THEN -vc.passenger_count ELSE 0 END as normal_delta
+    FROM visitings_customers vc
+    JOIN customers c ON c.id = vc.customer_id
+    WHERE vc.soge_type = 2  -- drop_off
+    
+    UNION ALL
+    
+    -- 迎えの乗車イベント（VCのorder）
+    SELECT 
+      vc.visiting_id,
+      vc.order as event_order,
+      vc.passenger_count as delta,
+      CASE WHEN c.wc = 1 THEN vc.passenger_count ELSE 0 END as wc_delta,
+      CASE WHEN c.wc = 0 THEN vc.passenger_count ELSE 0 END as normal_delta
+    FROM visitings_customers vc
+    JOIN customers c ON c.id = vc.customer_id
+    WHERE vc.soge_type = 1  -- pick_up
+    
+    UNION ALL
+    
+    -- 迎えの降車イベント（base_point_idのVPのorder）
+    SELECT 
+      vc.visiting_id,
+      COALESCE((
+        SELECT MIN(vp.order)
+        FROM visitings_points vp
+        WHERE vp.visiting_id = vc.visiting_id 
+          AND vp.point_id = vc.base_point_id
+      ), vc.order) as event_order,
+      -vc.passenger_count as delta,
+      CASE WHEN c.wc = 1 THEN -vc.passenger_count ELSE 0 END as wc_delta,
+      CASE WHEN c.wc = 0 THEN -vc.passenger_count ELSE 0 END as normal_delta
+    FROM visitings_customers vc
+    JOIN customers c ON c.id = vc.customer_id
+    WHERE vc.soge_type = 1  -- pick_up
+    
+    UNION ALL
+    
+    -- 添乗員イベント（need_helper=trueの利用者がいる便は、order=0で添乗員が乗車）
+    SELECT 
+      vc.visiting_id,
+      0 as event_order,
+      1 as delta,
+      0 as wc_delta,
+      1 as normal_delta
+    FROM visitings_customers vc
+    JOIN customers c ON c.id = vc.customer_id
+    WHERE c.need_helper = true
+    GROUP BY vc.visiting_id
+  ),
+  cumulative_counts AS (
+    SELECT 
+      visiting_id,
+      event_order,
+      delta,
+      wc_delta,
+      normal_delta,
+      SUM(delta) OVER (
+        PARTITION BY visiting_id 
+        ORDER BY event_order
+        ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
+      ) as current_count,
+      SUM(wc_delta) OVER (
+        PARTITION BY visiting_id 
+        ORDER BY event_order
+        ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
+      ) as current_wc_count,
+      SUM(normal_delta) OVER (
+        PARTITION BY visiting_id 
+        ORDER BY event_order
+        ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
+      ) as current_normal_count
+    FROM events
+    WHERE event_order IS NOT NULL
+  ),
+  capacity_checks AS (
+    SELECT 
+      cc.visiting_id,
+      cc.event_order,
+      cc.current_count,
+      cc.current_wc_count,
+      cc.current_normal_count,
+      cpwn.wc_seat,
+      cpwn.normal_seat,
+      (cpwn.wc_seat + cpwn.normal_seat) as total_allowed,
+      CASE 
+        -- 車椅子超過専用フラグ
+        WHEN cpwn.wc_seat IS NULL THEN 1  -- パターン不在 = 車椅子超過
+        WHEN cc.current_wc_count > cpwn.wc_seat THEN 1  -- 車椅子超過
+        ELSE 0
+      END as is_wc_over_capacity,
+      CASE 
+        -- 普通座席・合計超過フラグ
+        WHEN cpwn.wc_seat IS NULL THEN 0  -- スキップ（車椅子超過アラートが出るため）
+        WHEN cc.current_normal_count > cpwn.normal_seat THEN 1  -- 普通座席超過
+        WHEN cc.current_count > (cpwn.wc_seat + cpwn.normal_seat) THEN 1  -- 合計超過
+        ELSE 0
+      END as is_over_capacity
+    FROM cumulative_counts cc
+    JOIN visitings v ON v.id = cc.visiting_id
+    LEFT JOIN cars c ON c.id = v.car_id
+    LEFT JOIN car_patterns cp ON cp.id = c.car_pattern_id
+    LEFT JOIN car_pattern_wc_numbers cpwn ON cpwn.car_pattern_id = cp.id 
+      AND cpwn.wc_seat = cc.current_wc_count
+  )
+  SELECT 
+    cc.visiting_id,
+    v.office_id,
+    MAX(cc.current_count) as max_passengers,
+    MAX(cc.current_wc_count) as max_wc_passengers,
+    MAX(cc.is_wc_over_capacity) as has_wc_capacity_violation,
+    MAX(cc.is_over_capacity) as has_capacity_violation
+  FROM capacity_checks cc
+  JOIN visitings v ON v.id = cc.visiting_id
+  GROUP BY cc.visiting_id, v.office_id
+")

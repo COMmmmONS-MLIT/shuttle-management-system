@@ -1,0 +1,23 @@
+export type Office = {
+  id?: number;
+  cd: string;
+  tenant_cd: string;
+  name: string;
+  name_kana: string;
+  postcode: string;
+  address: string;
+  tel: string;
+  fax: string;
+  mail: string;
+  contact_person_name: string;
+  contact_person_kana: string;
+  lat?: number;
+  lng?: number;
+  is_active: boolean;
+  category: string;
+  created_at: string | null;
+  updated_at: string | null;
+  user_count?: number;
+  only_schedule_create?: boolean;
+  accept_office_ids?: number[];
+};

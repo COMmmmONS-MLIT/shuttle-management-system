@@ -1,0 +1,32 @@
+ja:
+  activemodel:
+    attributes:
+      visitings_customer_registration_form/visitings_customer:
+        cd: 利用者番号
+        date: 日付
+        departure_time: 迎え時間
+        arrival_time: 到着時間
+        start_time: 開始時間
+        invalid_cd: ""
+        departure_time_before_arrival_time: ""
+        start_time_before_arrival_time: ""
+        departure_time_before_start_time: ""
+      visitings_customer_update_form/visitings_customer:
+        departure_time: 迎え時間
+        arrival_time: 到着時間
+        start_time: 開始時間
+        departure_time_before_arrival_time: ""
+        start_time_before_arrival_time: ""
+        departure_time_before_start_time: ""
+      visitings_customer_bulk_registration_form/visitings_customer:
+        start_date: 開始日
+        end_date: 終了日
+        passenger_count: 乗車人数
+        cd: 利用者番号
+      education_visitings_customer_registration_form:
+        date: 日付
+        customer_cd: 利用者番号
+        soge_type: 送迎種別
+        schedule_time: 予定時間
+        point_id: 到着地点
+        base_point_id: 出発地点

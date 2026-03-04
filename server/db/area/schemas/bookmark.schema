@@ -1,0 +1,24 @@
+create_table "bookmark", primary_key: "bid", id: :integer, charset: "utf8", force: :cascade do |t|
+  t.string "事業所cd", limit: 10, null: false
+  t.string "郵便番号", limit: 7, comment: "ハイフン無し"
+  t.string "住所ラベル", limit: 40, comment: "登録地点の名称"
+  t.string "住所", limit: 120, comment: "送迎タブの送迎住所から"
+  t.string "号室名", limit: 40, comment: "マンション名等"
+  t.string "電話番号", limit: 13, comment: "地点ごとの連絡先"
+  t.string "電話メモ", limit: 100
+  t.decimal "lat", precision: 9, scale: 6, default: "0.0", comment: "この住所に対して"
+  t.decimal "lng", precision: 9, scale: 6, default: "0.0"
+  t.decimal "停車lat", precision: 9, scale: 6, default: "0.0", comment: "車両の停車指定がある場合"
+  t.decimal "停車lng", precision: 9, scale: 6, default: "0.0"
+  t.integer "待ち時間", default: 0
+  t.decimal "距離", precision: 4, scale: 1, default: "0.0"
+  t.integer "時間", limit: 3
+  t.integer "車両制限", comment: "地点ごとの車両制限"
+  t.decimal "許容率", precision: 3, default: "0", comment: "乗車時間の許容率 0 で無ければ利用者の許容率より優先される"
+  t.string "備考", limit: 100, comment: "地点ごと"
+  t.string "参考id", limit: 12, comment: "利用者番号の覚書"
+  t.integer "カテゴリ", default: 0, comment: "0:未分類 1:診察 2:買い物 3:娯楽 4:移動 5:日常生活 6:デイサービス 10:自宅"
+  t.integer "landmark", default: 0, comment: "0:偽 1:真"
+  t.integer "無効", default: 0, comment: "0:偽 1:真"
+  t.index ["事業所cd", "参考id"], name: "index_id"
+end

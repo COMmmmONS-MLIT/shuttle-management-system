@@ -1,0 +1,10 @@
+create_table :car_patterns, id: { type: :integer, collation: "utf8mb4_0900_ai_ci" }, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", comment: '車両パターン' do |t|
+  t.integer :office_id, null: false, comment: '事業所ID (FK)'
+  t.string :name, null: false, comment: 'パターン名'
+  t.integer :car_type, comment: '車両タイプ(enum)'
+
+  t.timestamps
+end
+
+add_foreign_key :car_patterns, :offices, column: :office_id
+add_index :car_patterns, :office_id

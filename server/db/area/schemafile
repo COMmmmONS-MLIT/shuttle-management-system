@@ -1,0 +1,7 @@
+# エラーが出るものはコメントアウト
+require 'schemas/bindatad.schema'
+require 'schemas/bookmark.schema'
+require 'schemas/mergedata.schema'
+require 'schemas/NowPos.schema'
+require 'schemas/p_bookmark.schema'
+require 'schemas/post_codes.schema'

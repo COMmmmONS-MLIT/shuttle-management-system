@@ -1,0 +1,7 @@
+create_table "p_bookmark", primary_key: ["事業所cd", "passengerId", "地点"], charset: "utf8", force: :cascade do |t|
+  t.string "事業所cd", limit: 10, null: false
+  t.string "passengerId", limit: 12, null: false, comment: "利用者番号"
+  t.integer "bid", null: false, comment: "利用者住所のid"
+  t.string "地点", limit: 2, null: false, comment: "A,B,C,D..."
+  t.date "登録日", null: false
+end

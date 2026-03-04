@@ -1,0 +1,18 @@
+ja:
+  activemodel:
+    attributes:
+      car_registration_form/car:
+        id: ID
+        name: 車両名
+        number: 車両番号
+        max_seat: 定員
+        max_wc_seat: 車椅子数
+        stopped: 停止フラグ
+        car_pattern: 車両パターン
+        pattern_name: 車種
+        car_type: 車両タイプ
+        restriction_ids: 車両制限
+        wc_numbers: 座席設定
+        wc_seat: 車椅子席数
+        normal_seat: 通常座席数
+        cargo_volume: 荷物容積

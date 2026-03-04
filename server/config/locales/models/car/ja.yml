@@ -1,0 +1,13 @@
+ja:
+  activerecord:
+    models:
+      car: 車両
+    attributes:
+      car:
+        id: ID
+        name: 車両名
+        number: 車両番号
+        max_seat: 最大座席数
+        max_wc_seat: 最大車椅子席数
+        stopped: 停止フラグ
+        type: 車両タイプ

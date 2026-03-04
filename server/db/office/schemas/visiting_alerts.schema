@@ -1,0 +1,212 @@
+execute("DROP VIEW IF EXISTS visiting_alerts")
+
+execute("CREATE VIEW visiting_alerts AS
+  SELECT
+    v.id as visiting_id,
+    v.date,
+    v.car_id,
+    v.office_id,
+    c.max_seat,
+    COALESCE(vmp.max_passengers, 0) as total_passengers,
+    1 as alert_type,
+    'capacity_over' as alert_name
+  FROM visitings v
+  JOIN cars c ON v.car_id = c.id
+  LEFT JOIN visiting_max_passengers vmp ON vmp.visiting_id = v.id
+  WHERE COALESCE(vmp.has_capacity_violation, 0) = 1
+
+  UNION ALL
+
+  SELECT
+    v.id as visiting_id,
+    v.date,
+    v.car_id,
+    v.office_id,
+    c.max_seat,
+    COALESCE(vmp.max_passengers, 0) as total_passengers,
+    2 as alert_type,
+    'start_time_late' as alert_name
+  FROM visitings v
+  JOIN cars c ON v.car_id = c.id
+  LEFT JOIN visiting_max_passengers vmp ON vmp.visiting_id = v.id
+  WHERE EXISTS (
+    SELECT 1
+    FROM visitings_customers vc2
+    LEFT JOIN visitings_points vp2 ON vp2.visiting_id = vc2.visiting_id
+      AND vp2.point_id = vc2.base_point_id
+      AND vp2.soge_type = vc2.soge_type
+    WHERE vc2.visiting_id = v.id
+      AND vc2.soge_type = 1
+      AND vc2.start_time IS NOT NULL
+      AND TIME(CONVERT_TZ(vc2.start_time, '+00:00', '+09:00')) < TIME(CONVERT_TZ(
+        COALESCE(vp2.actual_time, v.arrival_time), '+00:00', '+09:00'))
+  )
+
+  UNION ALL
+
+  SELECT
+    v.id AS visiting_id,
+    v.date,
+    v.car_id,
+    v.office_id,
+    c.max_seat,
+    COALESCE(vmp.max_passengers, 0) AS total_passengers,
+    3 AS alert_type,
+    'driver_schedule_overlap' AS alert_name
+  FROM visitings v
+  JOIN cars c ON v.car_id = c.id
+  LEFT JOIN visiting_max_passengers vmp ON vmp.visiting_id = v.id
+  WHERE EXISTS (
+    SELECT 1
+    FROM visitings v2
+    WHERE v2.id <> v.id
+      AND v2.office_id = v.office_id
+      AND v2.driver_id = v.driver_id
+      AND v2.driver_id IS NOT NULL
+      AND (
+        TIMESTAMP(v.date, TIME(CONVERT_TZ(v.departure_time, '+00:00', '+09:00'))) <
+          CASE
+            WHEN TIME(CONVERT_TZ(v2.arrival_time, '+00:00', '+09:00'))
+                < TIME(CONVERT_TZ(v2.departure_time, '+00:00', '+09:00'))
+              THEN TIMESTAMP(v2.date + INTERVAL 1 DAY,
+                            TIME(CONVERT_TZ(v2.arrival_time, '+00:00', '+09:00')))
+            ELSE TIMESTAMP(v2.date,
+                          TIME(CONVERT_TZ(v2.arrival_time, '+00:00', '+09:00')))
+          END
+        AND
+        TIMESTAMP(v2.date, TIME(CONVERT_TZ(v2.departure_time, '+00:00', '+09:00'))) <
+          CASE
+            WHEN TIME(CONVERT_TZ(v.arrival_time, '+00:00', '+09:00'))
+                < TIME(CONVERT_TZ(v.departure_time, '+00:00', '+09:00'))
+              THEN TIMESTAMP(v.date + INTERVAL 1 DAY,
+                            TIME(CONVERT_TZ(v.arrival_time, '+00:00', '+09:00')))
+            ELSE TIMESTAMP(v.date,
+                          TIME(CONVERT_TZ(v.arrival_time, '+00:00', '+09:00')))
+          END
+      )
+  )
+
+  UNION ALL
+
+  SELECT
+    v.id as visiting_id,
+    v.date,
+    v.car_id,
+    v.office_id,
+    c.max_seat,
+    COALESCE(vmp.max_passengers, 0) as total_passengers,
+    4 as alert_type,
+    'pickup_order_wrong' as alert_name
+  FROM visitings v
+  JOIN cars c ON v.car_id = c.id
+  LEFT JOIN visiting_max_passengers vmp ON vmp.visiting_id = v.id
+  WHERE EXISTS (
+    SELECT 1
+    FROM visitings_customers vc
+    JOIN visitings_points vp ON vp.visiting_id = vc.visiting_id
+    WHERE vc.visiting_id = v.id
+      AND vc.soge_type = 1
+      AND vp.point_id = vc.base_point_id
+      AND vp.arrival = false
+      AND vc.order > vp.order
+  )
+
+  UNION ALL
+
+  SELECT
+    v.id as visiting_id,
+    v.date,
+    v.car_id,
+    v.office_id,
+    c.max_seat,
+    COALESCE(vmp.max_passengers, 0) as total_passengers,
+    5 as alert_type,
+    'dropoff_order_wrong' as alert_name
+  FROM visitings v
+  JOIN cars c ON v.car_id = c.id
+  LEFT JOIN visiting_max_passengers vmp ON vmp.visiting_id = v.id
+  WHERE EXISTS (
+    SELECT 1
+    FROM visitings_customers vc
+    JOIN visitings_points vp ON vp.visiting_id = vc.visiting_id
+    WHERE vc.visiting_id = v.id
+      AND vc.soge_type = 2
+      AND vp.point_id = vc.base_point_id
+      AND vp.arrival = false
+      AND vp.order > vc.order
+  )
+
+  UNION ALL
+
+  SELECT
+    v.id as visiting_id,
+    v.date,
+    v.car_id,
+    v.office_id,
+    c.max_seat,
+    COALESCE(vmp.max_passengers, 0) as total_passengers,
+    6 as alert_type,
+    'wc_capacity_over' as alert_name
+  FROM visitings v
+  JOIN cars c ON v.car_id = c.id
+  LEFT JOIN visiting_max_passengers vmp ON vmp.visiting_id = v.id
+  WHERE COALESCE(vmp.has_wc_capacity_violation, 0) = 1
+
+  UNION ALL
+
+  SELECT
+    v.id as visiting_id,
+    v.date,
+    v.car_id,
+    v.office_id,
+    c.max_seat,
+    COALESCE(vmp.max_passengers, 0) as total_passengers,
+    7 as alert_type,
+    'helper_required' as alert_name
+  FROM visitings v
+  JOIN cars c ON v.car_id = c.id
+  LEFT JOIN visiting_max_passengers vmp ON vmp.visiting_id = v.id
+  WHERE EXISTS (
+    SELECT 1
+    FROM visitings_customers vc
+    JOIN customers cust ON cust.id = vc.customer_id
+    WHERE vc.visiting_id = v.id
+      AND cust.need_helper = true
+  )
+  AND (
+    v.tenjo_id IS NULL
+    OR NOT EXISTS (
+      SELECT 1
+      FROM staffs s
+      WHERE s.id = v.tenjo_id
+        AND s.can_helper = true
+    )
+  )
+
+  UNION ALL
+
+  SELECT
+    v.id as visiting_id,
+    v.date,
+    v.car_id,
+    v.office_id,
+    c.max_seat,
+    COALESCE(vmp.max_passengers, 0) as total_passengers,
+    8 as alert_type,
+    'customer_ng_combination' as alert_name
+  FROM visitings v
+  JOIN cars c ON v.car_id = c.id
+  LEFT JOIN visiting_max_passengers vmp ON vmp.visiting_id = v.id
+  WHERE EXISTS (
+    SELECT 1
+    FROM visitings_customers vc1
+    JOIN visitings_customers vc2 ON vc2.visiting_id = vc1.visiting_id
+      AND vc2.customer_id <> vc1.customer_id
+    JOIN customer_ngs ng ON ng.office_id = v.office_id
+      AND (
+        (ng.customer_a_id = vc1.customer_id AND ng.customer_b_id = vc2.customer_id)
+        OR (ng.customer_a_id = vc2.customer_id AND ng.customer_b_id = vc1.customer_id)
+      )
+    WHERE vc1.visiting_id = v.id
+  )
+")

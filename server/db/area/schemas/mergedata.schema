@@ -1,0 +1,47 @@
+create_table "mergedata", primary_key: ["日付", "事業所cd", "利用者番号", "送迎区分", "carId", "出発時間", "便順"], charset: "utf8", force: :cascade do |t|
+  t.date "日付", null: false
+  t.string "事業所cd", limit: 10, null: false
+  t.string "車両番号", limit: 6
+  t.integer "carId", limit: 4, null: false
+  t.integer "便順", limit: 3
+  t.integer "表示順", limit: 2, default: 0
+  t.integer "乗車人数", limit: 2
+  t.time "出発時間", null: false
+  t.time "予到着時間"
+  t.time "予定時間"
+  t.string "利用者番号", limit: 20, null: false
+  t.string "利用者名", limit: 80, null: false
+  t.string "フリガナ", limit: 80, null: false
+  t.string "乗車", limit: 12, null: false, comment: "乗車場所を示すID"
+  t.string "送迎区分", limit: 1, null: false
+  t.time "設定時刻", comment: "基本の送迎時刻"
+  t.time "開始時刻", comment: "サービス開始時刻"
+  t.string "乗車住所", limit: 120
+  t.string "降車", limit: 12, null: false, comment: "降車場所を示すID"
+  t.string "降車住所", limit: 120
+  t.decimal "lat1", precision: 9, scale: 6, comment: "乗車地点"
+  t.decimal "lng1", precision: 9, scale: 6
+  t.decimal "lat2", precision: 9, scale: 6, comment: "誘導経路の登録があれば表示"
+  t.decimal "lng2", precision: 9, scale: 6
+  t.decimal "lat3", precision: 9, scale: 6, comment: "降車地点"
+  t.decimal "lng3", precision: 9, scale: 6
+  t.string "注意事項", limit: 200, comment: "迎_申送り,送_申送り,注意事項,備考"
+  t.integer "車両制限", default: 0
+  t.integer "gate", default: 0
+  t.decimal "歩行器", precision: 2, scale: 1
+  t.integer "休"
+  t.string "休理由", limit: 100
+  t.string "歩行", limit: 60
+  t.string "乗車名", limit: 40
+  t.string "降車名", limit: 40
+  t.string "軽作業ID", limit: 6, default: 0, null: false, comment: "買物実績 軽作業ID=44"
+  t.string "車両呼称", limit: 20
+  t.integer "定員", limit: 2
+  t.integer "gate定員", limit: 2, default: 0
+  t.integer "G人数", limit: 2, default: 0
+  t.integer "waittime", limit: 3, default: 0
+  t.string "運転手", limit: 20
+  t.integer "車両区分", limit: 1, default: 0, comment: "添乗がある時"
+  t.time "変更時間", comment: "デマンドが入った時の増加コスト分遅くなるので予定時間＋増加コストの時間"
+  t.string "自車区分", limit: 1
+end

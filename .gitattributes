@@ -1,0 +1,8 @@
+# デフォルトは自動判定
+* text=auto
+
+# シェルスクリプトは常にLF（Linuxで実行するため）
+*.sh text eol=lf
+
+# Dockerfileも常にLF
+Dockerfile text eol=lf

@@ -1,0 +1,20 @@
+create_table :visitings_points, id: { type: :integer, collation: "utf8mb4_0900_ai_ci" }, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", comment: '来館地点' do |t|
+  t.integer :office_id, null: false, comment: '事業所ID (FK)'
+  t.date :date, comment: '日付'
+  t.integer :visiting_id, comment: '送迎ID (FK)'
+  t.integer :soge_type, comment: '利用者の送迎区分 迎えのみ: 1, 送りを含む: 2'
+  t.integer :order, comment: '順番'
+  t.time :actual_time, comment: '実迎時間'
+  t.integer :point_id, comment: '場所ID (FK)'
+  t.text :note, comment: '備考'
+  t.boolean :arrival, null: false, default: false, comment: '便の到着地点'
+
+  t.timestamps
+
+end
+
+add_foreign_key :visitings_points, :offices, column: :office_id
+add_foreign_key :visitings_points, :visitings, column: :visiting_id
+
+add_index :visitings_points, :office_id
+add_index :visitings_points, :visiting_id

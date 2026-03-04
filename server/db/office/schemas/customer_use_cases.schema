@@ -1,0 +1,32 @@
+create_table :customer_use_cases, id: { type: :integer, collation: "utf8mb4_0900_ai_ci" }, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", comment: '利用パターン' do |t|
+  t.integer :office_id, null: false, comment: '事業所ID'
+  t.integer :customer_id, null: false, comment: '利用者ID'
+  t.integer :day_of_week, comment: '曜日 (enum)'
+  t.integer :pick_up_point_id, comment: '迎え場所ID (FK)'
+  t.integer :drop_off_point_id, comment: '送り場所ID (FK)'
+  t.time :departure_time, comment: '出発時間'
+  t.time :arrival_time, comment: '到着時間'
+  t.time :start_time, comment: '開始時間'
+  t.boolean :self_pick_up, comment: '自来'
+  t.boolean :self_drop_off, comment: '自退'
+  t.boolean :pick_up_request, comment: '迎えリクエス'
+  t.boolean :drop_off_request, comment: '送りリクエスト'
+  t.boolean :active, comment: '有効'
+  t.integer :pick_up_base_point_id, comment: '迎え場所基点'
+  t.integer :drop_off_base_point_id, comment: '送り場所基点'
+
+  t.timestamps
+
+end
+
+add_foreign_key :customer_use_cases, :offices, column: :office_id
+add_foreign_key :customer_use_cases, :customers, column: :customer_id
+add_foreign_key :customer_use_cases, :bookmark, column: :pick_up_base_point_id, primary_key: :bid
+add_foreign_key :customer_use_cases, :bookmark, column: :drop_off_base_point_id, primary_key: :bid
+
+add_index :customer_use_cases, :office_id
+add_index :customer_use_cases, :customer_id
+add_index :customer_use_cases, :pick_up_point_id
+add_index :customer_use_cases, :drop_off_point_id
+add_index :customer_use_cases, :pick_up_base_point_id
+add_index :customer_use_cases, :drop_off_base_point_id

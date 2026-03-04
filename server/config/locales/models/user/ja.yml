@@ -1,0 +1,17 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+    attributes:
+      user:
+        name: 名前
+        kana: カナ
+        email: メールアドレス
+        role: 権限
+        password: パスワード
+    enums:
+      user:
+        role:
+          staff: 一般
+          staff_admin: 管理者
+          customer: 利用者

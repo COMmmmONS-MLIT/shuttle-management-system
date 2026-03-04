@@ -1,0 +1,9 @@
+ja:
+  activemodel:
+    attributes:
+      customer_request_form:
+        all: ""
+        customer_id: 利用者ID
+        address_label: 地点名
+        departure_time: 送迎時間
+        date: 日付

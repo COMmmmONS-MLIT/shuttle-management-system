@@ -1,0 +1,19 @@
+ja:
+  activerecord:
+    models:
+      use_case: 利用者
+    attributes:
+      use_case:
+        id: ID
+        customer_id: 利用者ID
+        day_of_week: 曜日
+        pick_up_point_id: 迎え場所ID
+        drop_off_point_id: 送り場所ID
+        departure_time: 出発時間
+        arrival_time: 到着時間
+        start_time: 開始時間
+        self_pick_up: 自迎え
+        self_drop_off: 自送り
+        pick_up_request: 迎え申し送り
+        drop_off_request: 送り申し送り
+        active: アクティブ

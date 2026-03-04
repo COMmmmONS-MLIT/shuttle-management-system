@@ -1,0 +1,28 @@
+ja:
+  activerecord:
+    models:
+      customer: 利用者
+    attributes:
+      customer:
+        id: ID
+        arrival_time: 送り予定時間
+        car_restriction_id: 車両制限
+        cd: 利用者番号
+        closed_at: 休止日
+        closed_reason: 休止理由
+        common_note: 共通備考
+        contract_status: 契約識別
+        departure_time: 迎え予定時間
+        drop_off_note: 送り申し送り
+        name: 氏名
+        name_kana: 氏名カナ
+        need_helper: 添乗員の有無
+        pick_up_note: 迎え申し送り
+        seat: 座席指定
+        self_drop_off: 自退
+        self_pick_up: 自来
+        start_time: サービス開始時間
+        walker: 歩行器利用
+        walker_size: 歩行器サイズ
+        wc: WC利用
+        office_id: 事業所ID

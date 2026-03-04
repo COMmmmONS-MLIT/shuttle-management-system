@@ -1,0 +1,834 @@
+.master,
+:root {
+  --color-set1: rgba(171, 191, 96, 1);
+  --color-set1-bg: rgba(246, 248, 239, 1);
+  --color-set1-weak: rgba(213, 223, 175, 1);
+  --color-set1-accent: rgba(87, 127, 0, 1);
+  --color-set2: rgba(242, 183, 5, 1);
+  --color-set2-weak: rgba(248, 219, 130, 1);
+  --color-set3: rgba(242, 116, 5, 1);
+  --color-set3-weak: rgba(248, 185, 130, 1);
+  --color-set4: rgba(191, 140, 111, 1);
+  --color-set4-weak: rgba(223, 197, 183, 1);
+  --color-set4-bg: rgba(223, 197, 183, 1);
+  --color-set5: rgba(242, 173, 166, 1);
+  --color-set5-weak: rgba(248, 214, 210, 1);
+  --color-set6: rgba(150, 122, 179, 1);
+  --color-set6-weak: rgba(202, 188, 217, 1);
+  --color-set7: rgba(92, 134, 204, 1);
+  --color-set7-weak: rgba(173, 194, 229, 1);
+  --color-set8: rgba(142, 180, 168, 1);
+  --color-set8-weak: rgba(198, 217, 211, 1);
+  --color-set9: rgba(199, 115, 109, 1);
+  --color-set10: rgba(216, 163, 82, 1);
+  --space-inline: 8px;
+  --space-block: 16px;
+}
+
+.admin {
+  --color-set1: rgba(171, 96, 191, 1);
+  --color-set1-weak: rgba(213, 175, 223, 1);
+  --color-set1-bg: rgba(246, 239, 248, 1);
+  --color-set1-accent: rgba(87, 0, 127, 1);
+  --color-set2: rgba(242, 183, 5, 1);
+  --color-set2-weak: rgba(248, 219, 130, 1);
+  --color-set3: rgba(242, 116, 5, 1);
+  --color-set3-weak: rgba(248, 185, 130, 1);
+  --color-set4: rgba(191, 140, 111, 1);
+  --color-set4-weak: rgba(223, 197, 183, 1);
+  --color-set4-bg: rgba(223, 197, 183, 1);
+  --color-set5: rgba(242, 173, 166, 1);
+  --color-set5-weak: rgba(248, 214, 210, 1);
+  --color-set6: rgba(150, 122, 179, 1);
+  --color-set6-weak: rgba(202, 188, 217, 1);
+  --color-set7: rgba(92, 134, 204, 1);
+  --color-set7-weak: rgba(173, 194, 229, 1);
+  --color-set8: rgba(142, 180, 168, 1);
+  --color-set8-weak: rgba(198, 217, 211, 1);
+  --color-set9: rgba(199, 115, 109, 1);
+  --color-set10: rgba(216, 163, 82, 1);
+  --space-inline: 8px;
+  --space-block: 16px;
+}
+
+.plan {
+  --color-set1: rgba(96, 171, 191, 1);
+  --color-set1-weak: rgba(175, 213, 223, 1);
+  --color-set1-bg: rgba(239, 246, 248, 1);
+  --color-set1-accent: rgba(0, 87, 127, 1);
+  --color-set2: rgba(242, 183, 5, 1);
+  --color-set2-weak: rgba(248, 219, 130, 1);
+  --color-set3: rgba(242, 116, 5, 1);
+  --color-set3-weak: rgba(248, 185, 130, 1);
+  --color-set4: rgba(191, 140, 111, 1);
+  --color-set4-weak: rgba(223, 197, 183, 1);
+  --color-set4-bg: rgba(223, 197, 183, 1);
+  --color-set5: rgba(242, 173, 166, 1);
+  --color-set5-weak: rgba(248, 214, 210, 1);
+  --color-set6: rgba(150, 122, 179, 1);
+  --color-set6-weak: rgba(202, 188, 217, 1);
+  --color-set7: rgba(92, 134, 204, 1);
+  --color-set7-weak: rgba(173, 194, 229, 1);
+  --color-set8: rgba(142, 180, 168, 1);
+  --color-set8-weak: rgba(198, 217, 211, 1);
+  --color-set9: rgba(199, 115, 109, 1);
+  --color-set10: rgba(216, 163, 82, 1);
+  --space-inline: 8px;
+  --space-block: 16px;
+}
+
+.setting {
+  --color-set1: rgba(191, 171, 96, 1);
+  --color-set1-weak: rgba(223, 213, 175, 1);
+  --color-set1-bg: rgba(248, 246, 239, 1);
+  --color-set1-accent: rgba(127, 87, 0, 1);
+  --color-set2: rgba(242, 183, 5, 1);
+  --color-set2-weak: rgba(248, 219, 130, 1);
+  --color-set3: rgba(242, 116, 5, 1);
+  --color-set3-weak: rgba(248, 185, 130, 1);
+  --color-set4: rgba(191, 140, 111, 1);
+  --color-set4-weak: rgba(223, 197, 183, 1);
+  --color-set4-bg: rgba(223, 197, 183, 1);
+  --color-set5: rgba(242, 173, 166, 1);
+  --color-set5-weak: rgba(248, 214, 210, 1);
+  --color-set6: rgba(150, 122, 179, 1);
+  --color-set6-weak: rgba(202, 188, 217, 1);
+  --color-set7: rgba(92, 134, 204, 1);
+  --color-set7-weak: rgba(173, 194, 229, 1);
+  --color-set8: rgba(142, 180, 168, 1);
+  --color-set8-weak: rgba(198, 217, 211, 1);
+  --color-set9: rgba(199, 115, 109, 1);
+  --color-set10: rgba(216, 163, 82, 1);
+  --space-inline: 8px;
+  --space-block: 16px;
+}
+
+.statistics {
+  --color-set1: rgba(171, 171, 171, 1);
+  --color-set1-weak: rgba(213, 213, 213, 1);
+  --color-set1-bg: rgba(246, 246, 246, 1);
+  --color-set1-accent: rgba(87, 87, 87, 1);
+  --color-set2: rgba(242, 183, 5, 1);
+  --color-set2-weak: rgba(248, 219, 130, 1);
+  --color-set3: rgba(242, 116, 5, 1);
+  --color-set3-weak: rgba(248, 185, 130, 1);
+  --color-set4: rgba(191, 140, 111, 1);
+  --color-set4-weak: rgba(223, 197, 183, 1);
+  --color-set4-bg: rgba(223, 197, 183, 1);
+  --color-set5: rgba(242, 173, 166, 1);
+  --color-set5-weak: rgba(248, 214, 210, 1);
+  --color-set6: rgba(150, 122, 179, 1);
+  --color-set6-weak: rgba(202, 188, 217, 1);
+  --color-set7: rgba(92, 134, 204, 1);
+  --color-set7-weak: rgba(173, 194, 229, 1);
+  --color-set8: rgba(142, 180, 168, 1);
+  --color-set8-weak: rgba(198, 217, 211, 1);
+  --color-set9: rgba(199, 115, 109, 1);
+  --color-set10: rgba(216, 163, 82, 1);
+  --space-inline: 8px;
+  --space-block: 16px;
+}
+
+.support {
+  --color-set1: rgba(191, 96, 171, 1);
+  --color-set1-weak: rgba(223, 175, 213, 1);
+  --color-set1-bg: rgba(248, 239, 246, 1);
+  --color-set1-accent: rgba(127, 0, 87, 1);
+  --color-set2: rgba(242, 183, 5, 1);
+  --color-set2-weak: rgba(248, 219, 130, 1);
+  --color-set3: rgba(242, 116, 5, 1);
+  --color-set3-weak: rgba(248, 185, 130, 1);
+  --color-set4: rgba(191, 140, 111, 1);
+  --color-set4-weak: rgba(223, 197, 183, 1);
+  --color-set4-bg: rgba(223, 197, 183, 1);
+  --color-set5: rgba(242, 173, 166, 1);
+  --color-set5-weak: rgba(248, 214, 210, 1);
+  --color-set6: rgba(150, 122, 179, 1);
+  --color-set6-weak: rgba(202, 188, 217, 1);
+  --color-set7: rgba(92, 134, 204, 1);
+  --color-set7-weak: rgba(173, 194, 229, 1);
+  --color-set8: rgba(142, 180, 168, 1);
+  --color-set8-weak: rgba(198, 217, 211, 1);
+  --color-set9: rgba(199, 115, 109, 1);
+  --color-set10: rgba(216, 163, 82, 1);
+  --space-inline: 8px;
+  --space-block: 16px;
+}
+
+.consult {
+  --color-set1: rgba(96, 191, 171, 1);
+  --color-set1-weak: rgba(175, 223, 213, 1);
+  --color-set1-bg: rgba(239, 248, 246, 1);
+  --color-set1-accent: rgba(0, 127, 87, 1);
+  --color-set2: rgba(242, 183, 5, 1);
+  --color-set2-weak: rgba(248, 219, 130, 1);
+  --color-set3: rgba(242, 116, 5, 1);
+  --color-set3-weak: rgba(248, 185, 130, 1);
+  --color-set4: rgba(191, 140, 111, 1);
+  --color-set4-weak: rgba(223, 197, 183, 1);
+  --color-set4-bg: rgba(223, 197, 183, 1);
+  --color-set5: rgba(242, 173, 166, 1);
+  --color-set5-weak: rgba(248, 214, 210, 1);
+  --color-set6: rgba(150, 122, 179, 1);
+  --color-set6-weak: rgba(202, 188, 217, 1);
+  --color-set7: rgba(92, 134, 204, 1);
+  --color-set7-weak: rgba(173, 194, 229, 1);
+  --color-set8: rgba(142, 180, 168, 1);
+  --color-set8-weak: rgba(198, 217, 211, 1);
+  --color-set9: rgba(199, 115, 109, 1);
+  --color-set10: rgba(216, 163, 82, 1);
+  --space-inline: 8px;
+  --space-block: 16px;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+hr,
+menu,
+nav,
+section {
+  display: block;
+}
+
+a,
+hr {
+  padding: 0;
+}
+
+abbr,
+address,
+article,
+aside,
+audio,
+b,
+blockquote,
+body,
+canvas,
+caption,
+cite,
+code,
+dd,
+del,
+details,
+dfn,
+div,
+dl,
+dt,
+em,
+fieldset,
+figcaption,
+figure,
+footer,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header,
+hgroup,
+html,
+i,
+iframe,
+img,
+ins,
+kbd,
+label,
+legend,
+li,
+mark,
+menu,
+nav,
+object,
+ol,
+p,
+pre,
+q,
+samp,
+section,
+small,
+span,
+strong,
+sub,
+summary,
+sup,
+table,
+tbody,
+td,
+tfoot,
+th,
+thead,
+time,
+tr,
+ul,
+var,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: 0 0;
+}
+
+ins,
+mark {
+  background-color: #ff9;
+  color: #000;
+}
+
+body {
+  line-height: 1;
+}
+
+nav ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:after,
+blockquote:before,
+q:after,
+q:before {
+  content: "";
+  content: none;
+}
+
+a {
+  margin: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: 0 0;
+}
+
+ins {
+  text-decoration: none;
+}
+
+mark {
+  font-style: italic;
+  font-weight: 700;
+}
+
+del {
+  text-decoration: line-through;
+}
+
+abbr[title],
+dfn[title] {
+  border-bottom: 1px dotted;
+  cursor: help;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+hr {
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+}
+
+input,
+select {
+  vertical-align: middle;
+}
+
+@keyframes dothabottomcheck {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 25px;
+  }
+}
+@keyframes dothatopcheck {
+  0% {
+    height: 0;
+  }
+  50% {
+    height: 0;
+  }
+  100% {
+    height: 60px;
+  }
+}
+@keyframes dothabottomcheck-m {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 12.5px;
+  }
+}
+@keyframes dothatopcheck-m {
+  0% {
+    height: 0;
+  }
+  50% {
+    height: 0;
+  }
+  100% {
+    height: 30px;
+  }
+}
+@keyframes alert {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+  }
+  25% {
+    transform: translate(-50%, -50%) scale(0.1);
+    opacity: 0.1;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 0.3;
+  }
+  75% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+  }
+}
+@font-face {
+  font-family: "icf";
+  src: url("../fonts/icf.eot?6dqh0w");
+  src: url("../fonts/icf.eot?6dqh0w#iefix") format("embedded-opentype"),
+    url("../fonts/icf.ttf?6dqh0w") format("truetype"),
+    url("../fonts/icf.woff?6dqh0w") format("woff"),
+    url("../fonts/icf.svg?6dqh0w#icf") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+i.icf {
+  font-family: "icf" !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icf-walker:before {
+  content: "\e900";
+}
+
+.tab:after,
+.list:after,
+.cont:after,
+.pack:after,
+.set:after,
+.box:after,
+.block:after,
+section:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+.tab,
+.list,
+.cont,
+.pack,
+.set,
+.box,
+.block,
+section {
+  zoom: 1;
+}
+
+body {
+  height: 100%;
+}
+
+body {
+  position: relative;
+  background-color: var(--color-set1-bg);
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+  line-height: 1.5;
+  letter-spacing: 0.1em;
+  color: #000;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "palt";
+  -webkit-font-feature-settings: "palt";
+}
+
+body.plan {
+  padding-bottom: 60px;
+}
+
+body.plan #pageBody {
+  min-height: calc(100vh - 60px);
+}
+
+input,
+select,
+button {
+  font-family: "Noto Sans JP", sans-serif;
+}
+
+a,
+a img {
+  transition: all 0.3s ease;
+}
+
+a:link {
+  color: #000;
+  text-decoration: none;
+}
+
+a:active,
+a:visited {
+  color: #000;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #000;
+  text-decoration: none;
+}
+
+@media screen and (min-width: 768px) {
+  a[href*="tel:"] {
+    pointer-events: none;
+    cursor: default;
+    text-decoration: none;
+  }
+}
+strong {
+  font-weight: normal;
+}
+
+.viewport {
+  overflow: hidden;
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--color-set1-weak);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-set1);
+}
+
+@media print {
+  body {
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
+    width: 100% !important;
+    margin: 0;
+    padding: 0;
+    zoom: 0.57;
+  }
+
+  @page {
+    size: A4 portrait;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+}
+.pdfSCT {
+  -webkit-print-color-adjust: exact;
+  box-sizing: border-box;
+  background-color: #fff;
+  width: 100%;
+}
+.pdfSCT .head {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--color-set1);
+  padding: 8px;
+}
+.pdfSCT .cont {
+  break-inside: avoid;
+}
+.pdfSCT table {
+  border-collapse: separate;
+  border-spacing: 0;
+  border: solid 1px var(--color-set1);
+  width: 100%;
+  height: 100%;
+}
+.pdfSCT .beside th {
+  position: sticky;
+  left: 0;
+  top: 0;
+  border-top: solid 1px var(--color-set1);
+  border-bottom: solid 1px var(--color-set1);
+  background-color: var(--color-set1-weak);
+  padding: 8px;
+  vertical-align: middle;
+  text-align: center;
+  font-feature-settings: "pkna";
+  -webkit-writing-mode: vertical-rl;
+  -moz-writing-mode: vertical-rl;
+  -ms-writing-mode: tb-rl;
+  -ms-writing-mode: vertical-rl;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  font-size: 12px;
+}
+.pdfSCT .beside th svg {
+  position: relative;
+  margin-top: 5px;
+  left: 3px;
+  color: var(--color-set1-accent);
+}
+.pdfSCT .vertical th {
+  border: solid 1px var(--color-set1);
+  background-color: var(--color-set1-weak);
+  padding: 8px;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 12px;
+}
+.pdfSCT .vertical th i,
+.pdfSCT .vertical th svg {
+  position: relative;
+  margin-right: 5px;
+  color: var(--color-set1-accent);
+}
+.pdfSCT .vertical th span {
+  position: relative;
+  margin-right: 5px;
+  color: var(--color-set1-accent);
+}
+.pdfSCT .vertical th span:last-child {
+  margin-right: 0;
+}
+.pdfSCT .beside td {
+  border: solid 1px var(--color-set1);
+  border-left: none;
+  width: calc(100% / 5);
+  height: 100%;
+  page-break-inside: avoid;
+}
+.pdfSCT .vertical td {
+  border: solid 1px var(--color-set1);
+  width: calc(100% / 5);
+  height: 100%;
+  page-break-inside: avoid;
+}
+.pdfSCT tr:nth-of-type(odd) td {
+  background-color: var(--color-set1-bg);
+}
+.pdfSCT .panel {
+  box-sizing: border-box;
+  border: solid 5px transparent;
+  padding: 5px;
+  width: 100%;
+  height: 100%;
+}
+.pdfSCT .panel .time {
+  display: flex;
+  align-items: center;
+  border-bottom: solid 1px #ddd;
+  margin-bottom: 3px;
+}
+.pdfSCT .panel .time dt {
+  background-color: #ddd;
+  margin-right: 8px;
+  padding: 0 5px;
+  font-size: 12px;
+}
+.pdfSCT .panel .time dd {
+  margin-right: 8px;
+}
+.pdfSCT .panel .time dd:last-child {
+  margin-right: 0;
+}
+.pdfSCT .panel .address {
+  margin-bottom: 3px;
+}
+.pdfSCT .panel .info {
+  transition: all 0.3s ease;
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 3px;
+  background-color: var(--color-set1-weak);
+  margin-bottom: 3px;
+  padding: 3px 8px;
+  gap: 0 16px;
+  cursor: pointer;
+}
+.pdfSCT .panel .info:hover {
+  background-color: var(--color-set2-weak);
+}
+.pdfSCT .panel .nurse,
+.pdfSCT .panel .number,
+.pdfSCT .panel .driver {
+  font-size: 12px;
+}
+.pdfSCT .panel .nurse svg,
+.pdfSCT .panel .number svg,
+.pdfSCT .panel .driver svg {
+  margin-right: 5px;
+  color: var(--color-set1-accent);
+}
+.pdfSCT .panel .nurse {
+  width: 100%;
+}
+.pdfSCT .panel .status {
+  display: flex;
+  align-items: center;
+}
+.pdfSCT .panel .pattern {
+  margin-right: 8px;
+}
+.pdfSCT .panel .pattern span {
+  display: inline-block;
+  border-radius: 3px;
+  padding: 3px 8px;
+  font-size: 12px;
+}
+.pdfSCT .panel .pattern .pattern1 {
+  background: var(--color-set2-weak);
+}
+.pdfSCT .panel .pattern .pattern2 {
+  background: var(--color-set8-weak);
+}
+.pdfSCT .panel .pattern .pattern3 {
+  background: var(--color-set4-weak);
+}
+.pdfSCT .panel .ride,
+.pdfSCT .panel .count {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.pdfSCT .panel .ride dt,
+.pdfSCT .panel .count dt {
+  border-radius: 9999px;
+  background-color: var(--color-set1-weak);
+  margin-right: 8px;
+  padding: 0 5px;
+  font-size: 12px;
+}
+.pdfSCT .panel .ride dt i,
+.pdfSCT .panel .ride dt svg,
+.pdfSCT .panel .count dt i,
+.pdfSCT .panel .count dt svg {
+  color: var(--color-set1-accent);
+}
+.pdfSCT .panel .ride dd,
+.pdfSCT .panel .count dd {
+  margin-right: 8px;
+}
+.pdfSCT .panel .ride dd:last-child,
+.pdfSCT .panel .count dd:last-child {
+  margin-right: 0;
+}
+.pdfSCT .panel .user {
+  margin-top: 3px;
+  list-style: none;
+  background-color: #eee;
+  min-height: 25px;
+}
+.pdfSCT .panel .user li {
+  background-color: #eee;
+  margin-bottom: 1px;
+  line-height: 21px;
+  cursor: pointer;
+}
+.pdfSCT .panel .user li.active p.greet {
+  background-color: var(--color-set2-weak);
+}
+.pdfSCT .panel .user li.active p.send {
+  background-color: var(--color-set8-weak);
+}
+.pdfSCT .panel .user p {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  padding: 3px 8px;
+}
+.pdfSCT .panel .user p .note {
+  font-weight: 700;
+  font-style: normal;
+  color: #c00;
+}
+.pdfSCT .panel .user .greet {
+  border: solid 2px var(--color-set2-weak);
+  background-color: #fff;
+}
+.pdfSCT .panel .user .send {
+  border: solid 2px var(--color-set8-weak);
+  background-color: #fff;
+}
+.pdfSCT .panel .user svg {
+  margin-left: 3px;
+}
+
+.pdfSCT2 {
+  box-sizing: border-box;
+  padding: 15px 20px 20px 20px;
+  width: 100%;
+  page-break-inside: avoid;
+}
+.pdfSCT2 dt {
+  border-top: dashed 1px var(--color-set1);
+  padding: 8px 0;
+  float: left;
+  width: 3em;
+  font-weight: 700;
+  font-style: normal;
+  color: #c00;
+}
+.pdfSCT2 dd {
+  border-top: dashed 1px var(--color-set1);
+  padding: 8px 0;
+  margin-left: 4em;
+}
+
+/* 印刷時のページ分割設定 */
+section.page-break-after {
+  page-break-after: always;
+}
+
+section.page-break-auto {
+  page-break-after: auto;
+}
+
+/* テーブル行のカーソル設定 */
+.pdfSCT tr {
+  cursor: default;
+}

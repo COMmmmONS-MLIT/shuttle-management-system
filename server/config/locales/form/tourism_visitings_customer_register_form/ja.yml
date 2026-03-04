@@ -1,0 +1,13 @@
+ja:
+  activemodel:
+    attributes:
+      tourism_visitings_customer_register_form:
+        name: 利用者名
+        name_kana: フリガナ
+        phone_number: 電話番号
+        passenger_count: 乗車人数
+        date: 日付
+        soge_type: 送迎種別
+        schedule_time: 予定時間
+        base_point_id: 出発地点
+        point_id: 到着地点

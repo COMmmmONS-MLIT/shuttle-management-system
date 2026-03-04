@@ -1,0 +1,23 @@
+ja:
+  activerecord:
+    models:
+      address: 住所
+    attributes:
+      address:
+        id: ID
+        postal_code: 郵便番号
+        address_label: 住所ラベル
+        address: 住所
+        room_name: 部屋名
+        phone_number: 電話番号
+        phone_memo: 電話メモ
+        lat: 緯度
+        lng: 経度
+        parking_lat: 駐車場緯度
+        parking_lng: 駐車場経度
+        wait_time: 待ち時間
+        distance: 距離
+        time: 時間
+        car_restriction_id: 車両制限
+        acceptance_rate: 許容率
+        remarks: 備考

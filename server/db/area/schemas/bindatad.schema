@@ -1,0 +1,15 @@
+create_table "bindatad", primary_key: ["日付", "事業所cd", "利用者番号", "送迎区分", "carId", "出発時間"], charset: "utf8", force: :cascade do |t|
+  t.date "日付", null: false
+  t.string "事業所cd", limit: 10, null: false
+  t.string "利用者番号", limit: 20, null: false
+  t.string "送迎区分", limit: 1, null: false
+  t.integer "carId", limit: 4, null: false
+  t.time "出発時間", null: false
+  t.time "乗車時刻"
+  t.time "降車時刻"
+  t.string "carStatus", limit: 20
+  t.time "updatetimec"
+  t.string "userStatus", limit: 20
+  t.time "updatetimeu"
+  t.integer "乗車人数", limit: 2, default: 0, null: false
+end

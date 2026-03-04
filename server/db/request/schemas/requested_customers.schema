@@ -1,0 +1,38 @@
+create_table :requested_customers, id: { type: :integer, collation: "utf8mb4_0900_ai_ci" }, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", comment: 'リクエスト利用者' do |t|
+  t.integer :office_id, null: false, comment: '事業所ID'
+  t.integer :source_id, null: false, comment: "利用者ID"
+  t.integer :source_vc_id, null: false, comment: "委託VCID"
+  t.string :cd, null: false, comment: '利用者番号'
+  t.integer :allowing_office_id, comment: '許可先事業所ID'
+  t.string :name, null: false, comment: '氏名'
+  t.string :name_kana, comment: '氏名カナ'
+  t.string :phone_number, comment: '電話番号'
+  t.boolean :wc, comment: 'WC利用 (車椅子)'
+  t.decimal :walker_size, precision: 2, scale: 1, comment: '歩行器サイズ'
+  t.boolean :walker, comment: '歩行器利用'
+  t.boolean :need_helper, comment: '添乗員'
+  t.date :date, comment: '日付'
+  t.time :schedule_time, comment: '予定時間'
+  t.time :actual_time, comment: '実時間'
+  t.time :point_time, comment: 'ポイント時間(迎え: 降車時間, 送り: 乗車時間)'
+  t.time :start_time, comment: 'サービス開始時間'
+  t.text :common_note, comment: '共通備考'
+  t.text :pick_up_note, comment: '迎え申し送り'
+  t.text :drop_off_note, comment: '送り申し送り'
+  t.integer :soge_type, comment: '送迎区分'
+  t.integer :point_id, comment: '送り場所ID (FK)'
+  t.integer :base_point_id, comment: '送り場所基点'
+  t.integer :passenger_count, default: 1, comment: '乗車人数'
+  t.text :note, comment: '備考'
+  t.boolean :is_cancellation_requested, default: false, comment: '受託後キャンセル要求フラグ'
+
+  t.timestamps
+end
+
+add_foreign_key :requested_customers, :offices, column: :office_id
+add_foreign_key :requested_customers, :bookmark, column: :point_id, primary_key: :bid
+add_foreign_key :requested_customers, :bookmark, column: :base_point_id, primary_key: :bid
+
+add_index :requested_customers, :office_id
+add_index :requested_customers, :point_id
+add_index :requested_customers, :base_point_id

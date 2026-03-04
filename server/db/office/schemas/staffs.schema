@@ -1,0 +1,19 @@
+create_table :staffs, id: { type: :integer, collation: "utf8mb4_0900_ai_ci" }, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", comment: 'スタッフ' do |t|
+  t.string :cd, null: false, comment: '職員番号'
+  t.integer :office_id, null: false, comment: '事業所ID (FK)'
+  t.string :name, null: false, comment: '氏名'
+  t.string :name_kana, comment: '氏名カナ'
+  t.integer :category, comment: 'カテゴリ (enum)'
+  t.boolean :can_driver, comment: '運転可能フラグ'
+  t.boolean :can_helper, comment: '添乗可能フラグ'
+  t.integer :driver_type, comment: '運転手区分 (enum)'
+  t.string :mail, comment: 'メールアドレス'
+  t.string :tel, comment: '電話番号'
+  t.boolean :is_stopped, default: false, comment: "停止"
+
+  t.timestamps
+end
+
+add_foreign_key :staffs, :offices, column: :office_id
+
+add_index :staffs, :office_id

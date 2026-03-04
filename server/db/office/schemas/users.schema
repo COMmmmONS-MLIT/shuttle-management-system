@@ -1,0 +1,43 @@
+create_table 'users', id: :bigint, charset: 'utf8mb4', collation: 'utf8mb4_0900_ai_ci', force: :cascade, comment: '事業所ユーザ' do |t|
+  t.integer :office_id, null: false, comment: '事業所ID (FK)'
+  ## Database authenticatable
+  t.string :email,              null: false, default: ""
+  t.string :encrypted_password, null: false, default: ""
+
+  t.string :name, default: '', null: false, comment: '名前'
+  t.string :kana, default: '', null: true, comment: 'カナ'
+  t.boolean :is_active, default: true, null: false
+  t.integer :role, default: 1, null: false, comment: 'ロール'
+  t.integer :customer_id, null: true, comment: '利用者ID'
+  ## Recoverable
+  t.string   :reset_password_token
+  t.datetime :reset_password_sent_at
+
+  ## Rememberable
+  t.datetime :remember_created_at
+
+  ## Trackable
+  # t.integer  :sign_in_count, default: 0, null: false
+  # t.datetime :current_sign_in_at
+  # t.datetime :last_sign_in_at
+  # t.string   :current_sign_in_ip
+  # t.string   :last_sign_in_ip
+
+  ## Confirmable
+  # t.string   :confirmation_token
+  # t.datetime :confirmed_at
+  # t.datetime :confirmation_sent_at
+  # t.string   :unconfirmed_email # Only if using reconfirmable
+
+  ## Lockable
+  # t.integer  :failed_attempts, default: 0, null: false # Only if lock strategy is :failed_attempts
+  # t.string   :unlock_token # Only if unlock strategy is :email or :both
+  # t.datetime :locked_at
+
+  t.belongs_to :office, null: false
+
+  t.timestamps null: false
+end
+
+add_foreign_key :users, :customers, column: :customer_id
+add_index :users, :customer_id

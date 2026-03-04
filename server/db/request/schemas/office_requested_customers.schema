@@ -1,0 +1,13 @@
+create_table :office_requested_customers, id: { type: :integer, collation: "utf8mb4_0900_ai_ci" }, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", comment: '事業所リクエスト利用者' do |t|
+  t.integer :office_id, null: false, comment: '事業所ID'
+  t.integer :requested_customer_id, null: false, comment: 'リクエスト利用者'
+  t.boolean :allowed, comment: "許可"
+
+  t.timestamps
+end
+
+add_foreign_key :office_requested_customers, :offices, column: :office_id
+add_foreign_key :office_requested_customers, :requested_customers, column: :requested_customer_id
+
+add_index :office_requested_customers, :office_id
+add_index :office_requested_customers, :requested_customer_id

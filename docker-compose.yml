@@ -1,0 +1,55 @@
+services:
+  db:
+    image: mysql:8.3.0
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: ${MYSQL_ALLOW_EMPTY_PASSWORD:-yes}
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      - "${DB_PORT:-3306}:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  server:
+    build: ./server
+    tty: true
+    stdin_open: true
+    environment:
+      RAILS_ENV: development
+      RAILS_DATABASE_HOST: db
+      RAILS_DATABASE_USER: ${RAILS_DATABASE_USER:-root}
+      RAILS_DATABASE_PASSWORD: ${RAILS_DATABASE_PASSWORD:-}
+      GOOGLE_MAP_API_KEY: ${GOOGLE_MAP_API_KEY:-}
+      CORS_ORIGINS: http://${PUBLIC_HOST:-localhost}:${FRONT_PORT:-8080}
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./server:/app
+      - bundle:/usr/local/bundle
+    ports:
+      - "${API_PORT:-3000}:3000"
+    entrypoint: ./entrypoint.sh
+    command: bundle exec rails s -b 0.0.0.0
+
+  front:
+    build: ./front
+    environment:
+      NEXT_PUBLIC_API_URL: http://${PUBLIC_HOST:-localhost}:${API_PORT:-3000}
+      NEXT_PUBLIC_GOOGLE_MAP_API_KEY: ${GOOGLE_MAP_API_KEY:-}
+    volumes:
+      - ./front:/app
+      - front_node_modules:/app/node_modules
+    ports:
+      - "${FRONT_PORT:-8080}:3000"
+    depends_on:
+      - server
+    command: sh -c "npm run build && npm run start"
+
+volumes:
+  db_data:
+  bundle:
+  front_node_modules:

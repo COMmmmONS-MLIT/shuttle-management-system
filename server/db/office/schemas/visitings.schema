@@ -1,0 +1,39 @@
+create_table :visitings, id: { type: :integer, collation: "utf8mb4_0900_ai_ci" }, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", comment: '送迎' do |t|
+  t.integer :office_id, null: false, comment: '事業所ID (FK)'
+  t.date :date, comment: '日付'
+  t.integer :car_id, comment: '車両ID (FK)'
+  t.integer :bin_order, comment: '便順'
+  t.integer :driver_id, comment: 'ドライバーID (FK)'
+  t.integer :tenjo_id, comment: '添乗者ID (FK)'
+  t.time :departure_time, comment: '出発時間'
+  t.time :arrival_time, comment: '到着時間'
+  t.integer :departure_point_id, comment: '出発地点ID (FK)'
+  t.integer :arrival_point_id, comment: '到着地点ID (FK)'
+  t.integer :source_visiting_id, comment: '共有元のVisitingID'
+  t.integer :source_office_id, comment: '共有元の事業所ID (FK)'
+  t.boolean :is_shared, default: false, comment: '共有された送迎か'
+  t.string :shared_car_name, comment: '共有された送迎の車両名'
+  t.string :shared_driver_name, comment: '共有された送迎の運転手名'
+  t.string :shared_tenjo_name, comment: '共有された送迎の添乗員名'
+  t.boolean :is_optimized_route, default: false, comment: '最適化された送迎か'
+  t.timestamps
+
+end
+
+add_foreign_key :visitings, :offices, column: :office_id
+add_foreign_key :visitings, :cars, column: :car_id
+add_foreign_key :visitings, :staffs, column: :driver_id
+add_foreign_key :visitings, :staffs, column: :tenjo_id
+add_foreign_key :visitings, :bookmark, column: :departure_point_id, primary_key: :bid
+add_foreign_key :visitings, :bookmark, column: :arrival_point_id, primary_key: :bid
+add_foreign_key :visitings, :offices, column: :source_office_id
+
+add_index :visitings, :office_id
+add_index :visitings, :car_id
+add_index :visitings, :driver_id
+add_index :visitings, :tenjo_id
+add_index :visitings, :departure_point_id
+add_index :visitings, :arrival_point_id
+add_index :visitings, :source_visiting_id
+add_index :visitings, :is_shared
+add_index :visitings, :source_office_id

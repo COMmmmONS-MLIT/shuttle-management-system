@@ -1,0 +1,20 @@
+create_table :offices, id: { type: :integer, collation: "utf8mb4_0900_ai_ci" }, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", comment: '事業所' do |t|
+  t.string :cd, limit: 10, comment: '事業所コード'
+  t.string :tenant_cd, limit: 10, comment: 'テナントコード'
+  t.string :name, null: false, comment: '事業所名'
+  t.string :name_kana, comment: '事業所名カナ'
+  t.string "postcode", limit: 7, comment: '郵便番号'
+  t.string "address", limit: 120, comment: "事業所住所"
+  t.string :tel, comment: '電話番号'
+  t.string :fax, comment: 'FAX番号'
+  t.string :mail, comment: 'メールアドレス'
+  t.string "contact_person_name", limit: 20, comment: "施設管理者名"
+  t.string "contact_person_kana", limit: 120, comment: "施設管理者名カナ"
+  t.decimal "lat", precision: 9, scale: 6, default: "0.0", comment: "この住所に対して"
+  t.decimal "lng", precision: 9, scale: 6, default: "0.0"
+  t.boolean :is_active, default: true, null: false
+  t.integer :category, default:1, comment: "officeカテゴリー(enum)"
+  t.boolean :only_schedule_create, default: false, null: false
+
+  t.timestamps
+end

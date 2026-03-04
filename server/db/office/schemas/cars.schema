@@ -1,0 +1,18 @@
+create_table :cars, id: { type: :integer, collation: "utf8mb4_0900_ai_ci" }, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", comment: '車両' do |t|
+  t.integer :office_id, null: false, comment: '事業所ID (FK)'
+  t.integer :car_pattern_id, comment: '車両パターンID (FK)'
+  t.string :name, null: false, comment: '車両名'
+  t.string :number, null: false, comment: '車両番号'
+  t.integer :max_wc_seat, comment: '最大車椅子席数'
+  t.integer :max_seat, comment: '最大座席数'
+  t.boolean :stopped, default: false, comment: '停止フラグ'
+  t.integer :point_id, comment: '便の出発・到着地点 (FK)'
+
+  t.timestamps
+end
+
+add_foreign_key :cars, :offices, column: :office_id
+add_foreign_key :cars, :car_patterns, column: :car_pattern_id
+
+add_index :cars, :office_id
+add_index :cars, :car_pattern_id

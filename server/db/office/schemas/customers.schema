@@ -1,0 +1,39 @@
+create_table :customers, id: { type: :integer, collation: "utf8mb4_0900_ai_ci" }, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", comment: '利用者' do |t|
+  t.string :cd, null: false, comment: '利用者番号'
+  t.integer :office_id, null: false, comment: '事業所ID'
+  t.string :name, null: false, comment: '氏名'
+  t.string :name_kana, comment: '氏名カナ'
+  t.string :phone_number, comment: '電話番号'
+  t.boolean :wc, comment: 'WC利用 (車椅子)'
+  t.decimal :walker_size, precision: 2, scale: 1, comment: '歩行器サイズ'
+  t.boolean :walker, comment: '歩行器利用'
+  t.integer :contract_status, comment: '契約識別 (enum)'
+  t.boolean :need_helper, comment: '添乗員'
+  t.integer :default_pick_up_point_id, comment: 'デフォルト迎え場所ID'
+  t.integer :default_drop_off_point_id, comment: 'デフォルト送り場所ID'
+  t.time :departure_time, comment: '迎え予定時間'
+  t.time :arrival_time, comment: '送り予定時間'
+  t.time :start_time, comment: 'サービス開始時間'
+  t.boolean :self_pick_up, comment: '自来'
+  t.boolean :self_drop_off, comment: '自退'
+  t.integer :seat_assignment, comment: '座席指定(enum)'
+  t.date :stopped_at, comment: '休止日'
+  t.text :stopped_reason, comment: '休止理由'
+  t.text :common_note, comment: '共通備考'
+  t.text :walking_note, comment: '歩行注意事項'
+  t.text :pick_up_note, comment: '迎え申し送り'
+  t.text :drop_off_note, comment: '送り申し送り'
+  t.integer :requested_customer_id, comment: 'リクエスト元データID'
+  t.date :contract_start_date, comment: '契約開始日'
+
+  t.timestamps
+end
+
+add_foreign_key :customers, :offices, column: :office_id
+add_foreign_key :customers, :bookmark, column: :default_pick_up_point_id, primary_key: :bid
+add_foreign_key :customers, :bookmark, column: :default_drop_off_point_id, primary_key: :bid
+
+add_index :customers, :office_id
+add_index :customers, :default_pick_up_point_id
+add_index :customers, :default_drop_off_point_id
+add_index :customers, :requested_customer_id

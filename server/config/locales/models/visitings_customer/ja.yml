@@ -1,0 +1,6 @@
+ja:
+  activerecord:
+    models:
+      visitings_customer: 来館予定
+    attributes:
+      visitings_customer:

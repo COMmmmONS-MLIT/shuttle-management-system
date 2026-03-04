@@ -1,0 +1,26 @@
+ja:
+  activerecord:
+    models:
+      area/bookmark: 地点
+    attributes:
+      area/bookmark:
+        office_code: 事業所cd
+        postal_code: 郵便番号
+        address_label: 地点名
+        address: 住所
+        room_name: 号室名
+        phone_number: 電話番号
+        phone_memo: 電話メモ
+        parking_lat: 停車lat
+        parking_lng: 停車lng
+        wait_time: 待ち時間
+        distance: 距離
+        time: 時間
+        car_restriction_id: 車両制限
+        acceptance_rate: 許容率
+        remarks: 備考
+        reference_id: 参考id
+        category: カテゴリ
+        is_invalid: 無効
+        lat: 緯度
+        lng: 経度

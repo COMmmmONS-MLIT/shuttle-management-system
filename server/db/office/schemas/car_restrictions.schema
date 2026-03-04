@@ -1,0 +1,5 @@
+create_table :car_restrictions, id: { type: :integer, collation: "utf8mb4_0900_ai_ci" }, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", comment: '車両制限' do |t|
+  t.string :name, null: false, comment: '車両制限'
+
+  t.timestamps
+end

@@ -1,0 +1,15 @@
+create_table :can_driving_cars, id: { type: :integer, collation: "utf8mb4_0900_ai_ci" }, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", comment: '運転可能車両' do |t|
+  t.integer :office_id, null: false, comment: '事業所ID (FK)'
+  t.integer :car_pattern_id, null: false, comment: '車両パターンID (FK)'
+  t.integer :driver_id, null: false, comment: '運転者ID (FK)'
+
+  t.timestamps comment: '作成日時と更新日時'
+end
+
+add_foreign_key :can_driving_cars, :offices, column: :office_id
+add_foreign_key :can_driving_cars, :car_patterns, column: :car_pattern_id
+add_foreign_key :can_driving_cars, :staffs, column: :driver_id
+
+add_index :can_driving_cars, :office_id
+add_index :can_driving_cars, :car_pattern_id
+add_index :can_driving_cars, :driver_id

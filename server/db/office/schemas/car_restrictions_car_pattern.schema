@@ -1,0 +1,14 @@
+create_table :car_restrictions_car_patterns, id: { type: :integer, collation: "utf8mb4_0900_ai_ci" }, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", comment: '車両制限' do |t|
+  t.integer :office_id, null: false, comment: '事業所ID (FK)'
+  t.integer :car_pattern_id, null: false, comment: '車両パターンID (FK)'
+  t.integer :car_restriction_id, null: false, comment: '車両制限ID (FK)'
+
+  t.timestamps
+end
+
+add_foreign_key :car_restrictions_car_patterns, :offices, column: :office_id
+add_foreign_key :car_restrictions_car_patterns, :car_patterns, column: :car_pattern_id
+
+add_index :car_restrictions_car_patterns, :office_id
+add_index :car_restrictions_car_patterns, :car_pattern_id
+add_index :car_restrictions_car_patterns, :car_restriction_id

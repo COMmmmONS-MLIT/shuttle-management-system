@@ -1,0 +1,71 @@
+ja:
+  activemodel:
+    attributes:
+      customer_registration_form/customer:
+        id: ID
+        cd: 利用者番号
+        name: 利用者名
+        name_kana: 利用者名（カナ）
+        phone_number: 電話番号
+        remarks: 備考
+        gate: ゲート
+        wheelchair: 車椅子
+        walker: 歩行器
+        walking: 歩行
+        walking_notes: 歩行備考
+        pickup_handover: 迎え申し送り
+        dropoff_handover: 送り申し送り
+        pickup_time: 迎え予定時間
+        dropoff_time: 送り予定時間
+        start_time: サービス開始時間
+        acceptance_rate: 許容率
+        seat_assignment: 座席指定
+        accompaniment: 添乗員
+        number_of_people: 人数
+        car_restriction_id: 車両制限
+        suspension_day: 休止日
+        suspension_reason: 休止理由
+        arrival_place: 到着場所
+        departure_place: 出発場所
+        contract_status: 契約識別
+        departure_time: 迎え時間
+        arrival_time: 終了時間
+        start_time: 開始時間
+        self_pick_up: 自迎え
+        self_drop_off: 自送り
+        pick_up_request: 迎え申し送り
+        drop_off_request: 送り申し送り
+        default_pick_up_point_id: デフォルト迎え場所
+        default_drop_off_point_id: デフォルト送り場所
+      customer_registration_form/use_cases:
+        id: ID
+        customer_id: 利用者ID
+        day_of_week: 曜日
+        pick_up_point_order: 迎え場所
+        drop_off_point_order: 送り場所
+        departure_time: 出発時間
+        arrival_time: 到着時間
+        start_time: 開始時間
+        self_pick_up: 自迎え
+        self_drop_off: 自送り
+        pick_up_request: 迎え申し送り
+        drop_off_request: 送り申し送り
+        active: アクティブ
+      customer_registration_form/addresses:
+        id: ID
+        postal_code: 郵便番号
+        address_label: 地点名
+        address: 住所
+        room_name: 部屋名
+        phone_number: 電話番号
+        phone_memo: 電話メモ
+        lat: 緯度
+        lng: 経度
+        parking_lat: 駐車場緯度
+        parking_lng: 駐車場経度
+        wait_time: 待ち時間
+        distance: 距離
+        time: 時間
+        car_restriction_id: 車両制限
+        acceptance_rate: 許容率
+        remarks: 備考

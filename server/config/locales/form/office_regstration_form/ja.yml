@@ -1,0 +1,19 @@
+ja:
+  activemodel:
+    attributes:
+      office_registration_form:
+        id: ID
+        cd: 事業所番号
+        tenant_cd: 事業所コード
+        name: 事業所名
+        name_kana: 事業所名（カナ）
+        postcode: 郵便番号
+        address: 住所
+        tel: 電話番号
+        fax: ファックス
+        mail: メールアドレス
+        contact_person_name: 担当者名
+        contact_person_kana: 担当者名（カナ）
+        lat: 緯度
+        lng: 経度
+        is_active: アクティブ

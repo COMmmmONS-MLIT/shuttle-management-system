@@ -1,0 +1,65 @@
+export type Customer = {
+  id?: number;
+  cd: string;
+  name: string;
+  name_kana: string;
+  contract_status?: number;
+  wc: number;
+  walker: number;
+  walker_size?: number;
+  need_helper: number;
+  seat_assignment: string;
+  default_pick_up_point_order?: number;
+  default_drop_off_point_order?: number;
+  pick_up_base_point_id?: number;
+  drop_off_base_point_id?: number;
+  car_restriction?: string;
+  departure_time: string;
+  arrival_time: string;
+  start_time: string;
+  self_pick_up: boolean;
+  self_drop_off: boolean;
+  common_note: string;
+  walking_note: string;
+  pick_up_note: string;
+  drop_off_note: string;
+  stopped_at: string;
+  stopped_reason: string;
+  image: string;
+  phone_number?: string;
+  contract_start_date?: string;
+};
+
+export type UseCase = {
+  id?: number;
+  customer_id?: number;
+  day_of_week: string;
+  departure_time: string;
+  pick_up_point_order?: number;
+  pick_up_base_point_id?: number;
+  drop_off_base_point_id?: number;
+  start_time: string;
+  arrival_time: string;
+  drop_off_point_order?: number;
+  self_pick_up: boolean;
+  self_drop_off: boolean;
+  active: boolean;
+  drop_off_request: boolean;
+  pick_up_request: boolean;
+};
+
+export type CustomerSearchParams = {
+  contract_status?: string;
+  customer_id_or_kana?: string;
+  order?: string;
+  page?: number;
+  per?: number;
+  stopped_at?: string;
+  sunday: boolean | null;
+  monday: boolean | null;
+  tuesday: boolean | null;
+  wednesday: boolean | null;
+  thursday: boolean | null;
+  friday: boolean | null;
+  saturday: boolean | null;
+};

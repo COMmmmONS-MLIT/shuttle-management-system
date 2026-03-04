@@ -1,0 +1,75 @@
+{
+  "ignored_warnings": [
+    {
+      "warning_type": "Mass Assignment",
+      "warning_code": 105,
+      "fingerprint": "16f77c938f9b60a562213ef0ce96d57dae1f3c43d9e49ab38999c7fdd306cedb",
+      "check_name": "PermitAttributes",
+      "message": "Potentially dangerous key allowed for mass assignment",
+      "file": "app/controllers/admin/users_controller.rb",
+      "line": 42,
+      "link": "https://brakemanscanner.org/docs/warning_types/mass_assignment/",
+      "code": "params.require(:user).permit(:name, :kana, :email, :password, :is_active, :role)",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Admin::UsersController",
+        "method": "user_params"
+      },
+      "user_input": ":role",
+      "confidence": "Medium",
+      "cwe_id": [
+        915
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "SQL Injection",
+      "warning_code": 0,
+      "fingerprint": "dddbd5a1199cb91e85ec1e2c044a1002e6e1b7ea1af07ff7c840ab03f443899d",
+      "check_name": "SQL",
+      "message": "Possible SQL injection",
+      "file": "app/services/data_uploader.rb",
+      "line": 25,
+      "link": "https://brakemanscanner.org/docs/warning_types/sql_injection/",
+      "code": "ActiveRecord::Base.connection.execute(\"DELETE FROM mergedata WHERE \\u65E5\\u4ED8 = '#{target_date.to_date}' AND \\u4E8B\\u696D\\u6240cd = '#{Office.find(office_id).cd}'\")",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "DataUploader",
+        "method": "delete_existing_data"
+      },
+      "user_input": "target_date.to_date",
+      "confidence": "Medium",
+      "cwe_id": [
+        89
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "Mass Assignment",
+      "warning_code": 105,
+      "fingerprint": "fa6bfacf26ebd498d5427399993b380664e546c28e31d814cf31fa4ca3783e45",
+      "check_name": "PermitAttributes",
+      "message": "Potentially dangerous key allowed for mass assignment",
+      "file": "app/controllers/admin/users_controller.rb",
+      "line": 49,
+      "link": "https://brakemanscanner.org/docs/warning_types/mass_assignment/",
+      "code": "params.require(:user).permit(:is_active, :role)",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Admin::UsersController",
+        "method": "update_params"
+      },
+      "user_input": ":role",
+      "confidence": "Medium",
+      "cwe_id": [
+        915
+      ],
+      "note": ""
+    }
+  ],
+  "updated": "2025-08-20 11:49:47 +0000",
+  "brakeman_version": "6.1.2"
+}

@@ -1,0 +1,7 @@
+ja:
+  activerecord:
+    models:
+      database: データベース
+    attributes:
+      database:
+        name: database_name
