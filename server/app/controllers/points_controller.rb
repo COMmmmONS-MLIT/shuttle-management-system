@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class PointsController < BaseController
+class PointsController < ApplicationController
   include Searchable
   before_action :set_bookmark, only: %i[show update]
 

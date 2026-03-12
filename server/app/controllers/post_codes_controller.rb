@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class PostCodesController < BaseController
+class PostCodesController < ApplicationController
   def show
     post_code = Area::PostCode.find_by(postcode: params[:id])
 

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CustomerNgsController < BaseController
+class CustomerNgsController < ApplicationController
   before_action :set_customer_ng, only: %i[update destroy]
 
   def index
