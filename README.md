@@ -19,7 +19,7 @@
 [「地域施設送迎のリソースシェア推進プロジェクト」](https://www.mlit.go.jp/commmmons/projectreport/04_01/)では、福祉・観光・教育などの施設で個別に行われていた利用者の送迎を統合的な配車管理システムを用いることで共同化し、地域輸送資源として活用可能にすることを目的に取り組んでいます。<br>
 施設職員等の非専門家でも簡単に利用できる直感的なUI/UXを提供することで、複数施設の送迎車両の運行計画や管理を効率化し、送迎以外の目的地への立ち寄りも可能にしています。<br>
 本プロジェクトでは、その成果はオープンソースとして公開することで、全国への社会実装を促進し、持続可能な地域交通の実現に寄与することを目指しています。<br>
-本システムの詳細については技術検証レポート（2026年3月公開予定）を参照してください。
+本システムの詳細は[「施設送迎共同管理システム 技術検証レポート」](https://www.mlit.go.jp/commmmons/tech_report/004/)を参照してください。
 
 ## 3. 利用手順
 
@@ -173,6 +173,9 @@
 ## 10. 参考資料
 
 - 地域施設送迎のリソースシェア推進プロジェクト　プロジェクトレポート
-  - https://www.mlit.go.jp/commmmons/projectreport/04_01/
-- 地域施設送迎のリソースシェア推進プロジェクト技術検証レポート:（2026年3月公開予定）
-- COMmmmONS Webサイト: https://www.mlit.go.jp/commmmons/
+  - #1 https://www.mlit.go.jp/commmmons/projectreport/04_01/
+  - #2 https://www.mlit.go.jp/commmmons/projectreport/04_01/
+- 施設送迎共同管理システム 技術検証レポート
+  - https://www.mlit.go.jp/commmmons/tech_report/004/
+- COMmmmONS Webサイト
+  - https://www.mlit.go.jp/commmmons/
