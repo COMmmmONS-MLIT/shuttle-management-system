@@ -174,7 +174,7 @@
 
 - 地域施設送迎のリソースシェア推進プロジェクト　プロジェクトレポート
   - #1 https://www.mlit.go.jp/commmmons/projectreport/04_01/
-  - #2 https://www.mlit.go.jp/commmmons/projectreport/04_01/
+  - #2 https://www.mlit.go.jp/commmmons/projectreport/04_02/
 - 施設送迎共同管理システム 技術検証レポート
   - https://www.mlit.go.jp/commmmons/tech_report/004/
 - COMmmmONS Webサイト
